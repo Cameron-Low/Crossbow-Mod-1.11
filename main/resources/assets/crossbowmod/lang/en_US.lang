@@ -1,0 +1,84 @@
+item.wood_binding.name=Wood Binding
+item.wood_binding_light.name=Wood Binding Light
+item.wood_binding_strong.name=Wood Binding Strong
+item.wood_bolt.name=Wood Bolt
+item.wood_crossbow.name=Wooden Crossbow
+item.wood_crossbow_light.name=Lightweight Wooden Crossbow
+item.wood_crossbow_strong.name=Strong Wooden Crossbow
+
+item.stone_binding.name=Stone Binding
+item.stone_binding_light.name=Stone Binding Light
+item.stone_binding_strong.name=Stone Binding Strong
+item.stone_bolt.name=Stone Bolt
+item.stone_crossbow.name=Stone Crossbow
+item.stone_crossbow_light.name=Lightweight Stone Crossbow
+item.stone_crossbow_strong.name=Strong Stone Crossbow
+
+item.iron_binding.name=Iron Binding
+item.iron_binding_light.name=Iron Binding Light
+item.iron_binding_strong.name=Iron Binding Strong
+item.iron_bolt.name=Iron Bolt
+item.iron_crossbow.name=Iron Crossbow
+item.iron_crossbow_light.name=Lightweight Iron Crossbow
+item.iron_crossbow_strong.name=Strong Iron Crossbow
+
+item.gold_binding.name=Gold Binding
+item.gold_binding_light.name=Gold Binding Light
+item.gold_binding_strong.name=Gold Binding Strong
+item.gold_bolt.name=Gold Bolt
+item.gold_crossbow.name=Gold Crossbow
+item.gold_crossbow_light.name=Lightweight Gold Crossbow
+item.gold_crossbow_strong.name=Strong Gold Crossbow
+
+item.diamond_binding.name=Diamond Binding
+item.diamond_binding_light.name=Diamond Binding Light
+item.diamond_binding_strong.name=Diamond Binding Strong
+item.diamond_bolt.name=Diamond Bolt
+item.diamond_crossbow.name=Diamond Crossbow
+item.diamond_crossbow_light.name=Lightweight Diamond Crossbow
+item.diamond_crossbow_strong.name=Strong Diamond Crossbow
+
+item.explosive_bolt.name=Explosive Bolt
+item.flame_bolt.name=Flame Bolt
+item.teleport_bolt.name=Teleport Bolt
+item.spectral_bolt.name=Spectral Bolt
+item.freeze_bolt.name=Freeze Bolt
+item.torch_bolt.name=Torch Bolt
+
+itemGroup.Crossbow Mod=Crossbows
+
+achievement.firstcrossbow=First Crossbow
+achievement.firstcrossbow.desc=Getting your first crossbow
+
+achievement.betterfirepower=Better Firepower
+achievement.betterfirepower.desc=Upgrading to much better things!
+
+achievement.ultimatekillingmachine=Ultimate Killing Machine
+achievement.ultimatekillingmachine.desc=No one stands a chance against you
+
+achievement.timetokill=Time To Kill
+achievement.timetokill.desc=Let's start killing these mobs
+
+achievement.betterbolts=Better Bolts
+achievement.betterbolts.desc=More damage is never a bad idea
+
+achievement.justoneshot=Just One Shot
+achievement.justoneshot.desc=One shot is all it needs
+
+achievement.pyro=Pyro
+achievement.pyro.desc=Time to light stuff up!
+
+achievement.anywherebuthere=Any Where But Here
+achievement.anywherebuthere.desc=Much rather be somewhere else right now
+
+achievement.wallhacker=WallHacker
+achievement.wallhacker.desc=Mobs glowing as bright as the moon
+
+achievement.timeforefun=Time For Fun
+achievement.timeforefun.desc=There is a lot of fun to be had with this
+
+achievement.brainfreeze=Brainfreeze
+achievement.brainfreeze.desc=It's about to get really chilly for one unfortunate mob
+
+achievement.advancedcaving=Advanced Caving
+achievement.advancedcaving.desc=This will help you explore caves like a pro

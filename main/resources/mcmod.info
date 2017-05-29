@@ -1,0 +1,16 @@
+[
+{
+  "modid": "crossbowmod",
+  "name": "Crossbow Mod",
+  "description": "A standard crossbow mod with a few crossbows and some extra bolts.",
+  "version": "1.5",
+  "mcversion": "1.11.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Cameron Low"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
