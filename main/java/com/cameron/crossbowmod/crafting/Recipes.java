@@ -10,20 +10,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class Recipes {
 	public static void init(){
 		//Wood
-		GameRegistry.addRecipe(new ItemStack(ModItems.woodBinding),
+		GameRegistry.addRecipe(new ItemStack(ModItems.woodBinding, 2),
 				new Object[]{
 				"AB",
 				"BA",
 				'A', Blocks.PLANKS,
 				'B', Items.STICK});
 
-		GameRegistry.addRecipe(new ItemStack(ModItems.woodBindingLight),
+		GameRegistry.addRecipe(new ItemStack(ModItems.woodBindingLight, 2),
 				new Object[]{
 				"BA",
 				'A', Blocks.PLANKS,
 				'B', Items.STICK});
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.woodBindingStrong),
+		GameRegistry.addRecipe(new ItemStack(ModItems.woodBindingStrong, 2),
 				new Object[]{
 				"BBA",
 				"BAB",
@@ -66,20 +66,20 @@ public class Recipes {
 				'C', ModItems.woodBindingStrong});
 		
 		//Stone
-		GameRegistry.addRecipe(new ItemStack(ModItems.stoneBinding),
+		GameRegistry.addRecipe(new ItemStack(ModItems.stoneBinding, 2),
 				new Object[]{
 				"AB",
 				"BA",
 				'A', Blocks.STONE,
 				'B', Items.STICK});
 
-		GameRegistry.addRecipe(new ItemStack(ModItems.stoneBindingLight),
+		GameRegistry.addRecipe(new ItemStack(ModItems.stoneBindingLight, 2),
 				new Object[]{
 				"BA",
 				'A', Blocks.STONE,
 				'B', Items.STICK});
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.stoneBindingStrong),
+		GameRegistry.addRecipe(new ItemStack(ModItems.stoneBindingStrong, 2),
 				new Object[]{
 				"BBA",
 				"BAB",
@@ -122,20 +122,20 @@ public class Recipes {
 				'C', ModItems.stoneBindingStrong});
 		
 		//Iron
-		GameRegistry.addRecipe(new ItemStack(ModItems.ironBinding),
+		GameRegistry.addRecipe(new ItemStack(ModItems.ironBinding, 2),
 				new Object[]{
 				"AB",
 				"BA",
 				'A', Items.IRON_INGOT,
 				'B', Items.STICK});
 
-		GameRegistry.addRecipe(new ItemStack(ModItems.ironBindingLight),
+		GameRegistry.addRecipe(new ItemStack(ModItems.ironBindingLight, 2),
 				new Object[]{
 				"BA",
 				'A', Items.IRON_INGOT,
 				'B', Items.STICK});
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.ironBindingStrong),
+		GameRegistry.addRecipe(new ItemStack(ModItems.ironBindingStrong, 2),
 				new Object[]{
 				"BBA",
 				"BAB",
@@ -178,20 +178,20 @@ public class Recipes {
 				'C', ModItems.ironBindingStrong});
 		
 		//Gold
-		GameRegistry.addRecipe(new ItemStack(ModItems.goldBinding),
+		GameRegistry.addRecipe(new ItemStack(ModItems.goldBinding, 2),
 				new Object[]{
 				"AB",
 				"BA",
 				'A', Items.GOLD_INGOT,
 				'B', Items.STICK});
 
-		GameRegistry.addRecipe(new ItemStack(ModItems.goldBindingLight),
+		GameRegistry.addRecipe(new ItemStack(ModItems.goldBindingLight, 2),
 				new Object[]{
 				"BA",
 				'A', Items.GOLD_INGOT,
 				'B', Items.STICK});
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.goldBindingStrong),
+		GameRegistry.addRecipe(new ItemStack(ModItems.goldBindingStrong, 2),
 				new Object[]{
 				"BBA",
 				"BAB",
@@ -234,20 +234,20 @@ public class Recipes {
 				'C', ModItems.goldBindingStrong});
 		
 		//Diamond
-		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBinding),
+		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBinding, 2),
 				new Object[]{
 				"AB",
 				"BA",
 				'A', Items.DIAMOND,
 				'B', Items.STICK});
 
-		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBindingLight),
+		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBindingLight, 2),
 				new Object[]{
 				"BA",
 				'A', Items.DIAMOND,
 				'B', Items.STICK});
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBindingStrong),
+		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBindingStrong, 2),
 				new Object[]{
 				"BBA",
 				"BAB",
@@ -255,7 +255,7 @@ public class Recipes {
 				'A', Items.DIAMOND,
 				'B', Items.STICK});
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBolt, 8),
+		GameRegistry.addRecipe(new ItemStack(ModItems.diamondBolt, 4),
 				new Object[]{
 				"A",
 				"B",
@@ -336,5 +336,33 @@ public class Recipes {
 				"B",
 				'A', Items.SNOWBALL,
 				'B', Items.STICK});
+		
+		//Upgrades
+		GameRegistry.addRecipe(new ItemStack(ModItems.scopeUpgrade, 1),
+				new Object[]{
+				"ABA",
+				"BCB",
+				"ABA",
+				'A', Items.IRON_INGOT,
+				'B', Blocks.GLASS_PANE,
+				'C', Items.REDSTONE});
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.autoReloadUpgrade, 1),
+				new Object[]{
+				"ABA",
+				"BCB",
+				"ABA",
+				'A', Items.IRON_INGOT,
+				'B', Items.DIAMOND,
+				'C', Items.REDSTONE});
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.triShotUpgrade, 1),
+				new Object[]{
+				"ABA",
+				"BCB",
+				"ABA",
+				'A', Items.IRON_INGOT,
+				'B', Blocks.OBSIDIAN,
+				'C', Items.REDSTONE});
 	}
 }

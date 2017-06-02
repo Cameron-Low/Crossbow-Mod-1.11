@@ -65,6 +65,11 @@ public class EntityBolt extends EntityArrow implements IEntityAdditionalSpawnDat
 					break;
 				}
 	    	}
+	    } else {
+		    if (!this.hasNoGravity())
+	        {
+	            this.motionY += 0.01000000074505806D;
+	        }
 	    }
 	}
 	

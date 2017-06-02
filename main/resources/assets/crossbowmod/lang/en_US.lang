@@ -45,6 +45,10 @@ item.spectral_bolt.name=Spectral Bolt
 item.freeze_bolt.name=Freeze Bolt
 item.torch_bolt.name=Torch Bolt
 
+item.scope_upgrade.name=Scope Upgrade
+item.auto_reload_upgrade.name=Auto Reload Upgrade
+item.tri_shot_upgrade.name=Tri Shot Upgrade
+
 itemGroup.Crossbow Mod=Crossbows
 
 achievement.firstcrossbow=First Crossbow

@@ -15,4 +15,6 @@ public class Ref {
 	//Item Stats
     public static final float LightWeightMultiplier = 0.8f;
     public static final float StrengthMultiplier = 1.35f;
+    
+    public static final int CROSSBOW_GUI_ID = 1;
 }
