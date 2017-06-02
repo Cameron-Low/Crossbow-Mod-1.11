@@ -1,6 +1,7 @@
 package com.cameron.crossbowmod.achievements;
 
 import com.cameron.crossbowmod.ModItems;
+import com.cameron.crossbowmod.items.BaseClasses.ItemUpgrade;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -14,6 +15,10 @@ public class AchievementListener
       event.player.addStat(AchievementList.FIRST_CROSSBOW, 1);
     } else if (event.crafting.getItem() == ModItems.ironCrossbow) {
       event.player.addStat(AchievementList.BETTER_FIREPOWER, 1);
+    } else if (event.crafting.getItem() instanceof ItemUpgrade) {
+      event.player.addStat(AchievementList.UPGRADES, 1);
+    } else if (event.crafting.getItem() == ModItems.autoReloadUpgrade) {
+      event.player.addStat(AchievementList.FULL_AUTO, 1);
     } else if (event.crafting.getItem() == ModItems.diamondCrossbow) {
       event.player.addStat(AchievementList.ULTIMATE_KILLING_MACHINE, 1);
     } else if (event.crafting.getItem() == ModItems.woodBolt) {

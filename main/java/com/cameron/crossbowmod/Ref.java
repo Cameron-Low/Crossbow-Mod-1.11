@@ -16,5 +16,7 @@ public class Ref {
     public static final float LightWeightMultiplier = 0.8f;
     public static final float StrengthMultiplier = 1.35f;
     
-    public static final int CROSSBOW_GUI_ID = 1;
+    public static final int DIAMOND_CROSSBOW_GUI_ID = 1;
+    public static final int IRON_CROSSBOW_GUI_ID = 2;
+    public static final int STONE_CROSSBOW_GUI_ID = 3;
 }

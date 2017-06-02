@@ -362,6 +362,15 @@ public class Recipes {
 				"BCB",
 				"ABA",
 				'A', Items.IRON_INGOT,
+				'B', Items.FLINT,
+				'C', Items.REDSTONE});
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinforcedUpgrade, 1),
+				new Object[]{
+				"ABA",
+				"BCB",
+				"ABA",
+				'A', Items.IRON_INGOT,
 				'B', Blocks.OBSIDIAN,
 				'C', Items.REDSTONE});
 	}

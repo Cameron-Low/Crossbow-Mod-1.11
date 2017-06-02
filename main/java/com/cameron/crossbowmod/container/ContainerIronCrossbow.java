@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 import com.cameron.crossbowmod.container.slots.BoltSlot;
 import com.cameron.crossbowmod.container.slots.UpgradeSlot;
-import com.cameron.crossbowmod.inventory.InventoryCrossbow;
+import com.cameron.crossbowmod.inventory.InventoryIronCrossbow;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -16,8 +16,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 
-public class ContainerCrossbow extends Container{
-	public ContainerCrossbow(EntityPlayer par1Player, InventoryPlayer inventoryPlayer, InventoryCrossbow inventoryItem)
+public class ContainerIronCrossbow extends Container{
+	public ContainerIronCrossbow(EntityPlayer par1Player, InventoryPlayer inventoryPlayer, InventoryIronCrossbow inventoryItem)
 	{
 		addStorageSlots(inventoryItem);
 		addUpgradeSlots(inventoryItem);
@@ -43,38 +43,22 @@ public class ContainerCrossbow extends Container{
     }
 
     private void addStorageSlots(IInventory inventory) {
-        int x = 26;
-        int y = 26;
+        int x = 62;
+        int y = 35;
 
         int slotIndex = 0;
-        int slotCount = 0;
-        for (int i = 0; i < InventoryCrossbow.INV_SIZE-2; i++){ 
-        	slotCount++;
+        for (int i = 0; i < InventoryIronCrossbow.INV_SIZE-1; i++){ 
         	this.addSlotToContainer(new BoltSlot(inventory, slotIndex, x, y));
             slotIndex++;
             x += 18;
-            if (slotCount == (InventoryCrossbow.INV_SIZE-2)/2){
-            	y += 18;
-            	x = 26;
-            }
         }
     }
     private void addUpgradeSlots(IInventory inventory) {
         int x = 142;
-        int y = 26;
+        int y = 35;
 
-        int slotIndex = InventoryCrossbow.INV_SIZE-2;
-        int slotCount = 0;
-        for (int i = 0; i < 2; i++){ 
-        	slotCount++;
-        	this.addSlotToContainer(new UpgradeSlot(inventory, slotIndex, x, y));
-            slotIndex++;
-            x += 18;
-            if (slotCount == 1){
-            	y += 18;
-            	x = 142;
-            }
-        }
+        int slotIndex = InventoryIronCrossbow.INV_SIZE-1;
+        this.addSlotToContainer(new UpgradeSlot(inventory, slotIndex, x, y));
     }
 	
 	@Override
@@ -93,11 +77,11 @@ public class ContainerCrossbow extends Container{
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
             
-            if (index < InventoryCrossbow.INV_SIZE) {
-                if (!this.mergeItemStack(itemstack1,InventoryCrossbow.INV_SIZE, this.inventorySlots.size(), true)) {
+            if (index < InventoryIronCrossbow.INV_SIZE) {
+                if (!this.mergeItemStack(itemstack1,InventoryIronCrossbow.INV_SIZE, this.inventorySlots.size(), true)) {
                 	return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 0, InventoryCrossbow.INV_SIZE, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 0, InventoryIronCrossbow.INV_SIZE, false)) {
             	return ItemStack.EMPTY;
             }
 

@@ -9,7 +9,9 @@ import com.cameron.crossbowmod.Ref;
 import com.cameron.crossbowmod.enums.Bolts;
 import com.cameron.crossbowmod.enums.Materials;
 import com.cameron.crossbowmod.enums.Upgrades;
-import com.cameron.crossbowmod.inventory.InventoryCrossbow;
+import com.cameron.crossbowmod.inventory.InventoryDiamondCrossbow;
+import com.cameron.crossbowmod.inventory.InventoryIronCrossbow;
+import com.cameron.crossbowmod.inventory.InventoryStoneCrossbow;
 import com.cameron.crossbowmod.items.entity.EntityDiamondBolt;
 import com.cameron.crossbowmod.items.entity.EntityExplosiveBolt;
 import com.cameron.crossbowmod.items.entity.EntityFlameBolt;
@@ -92,9 +94,29 @@ public class ItemCrossbow extends Item
     	super.onEntitySwing(entityLiving, stack);
     	if (entityLiving instanceof EntityPlayer){
     		EntityPlayer player = (EntityPlayer) entityLiving;
-    		if (!player.world.isRemote && (this.material != Materials.STONE || this.material != Materials.WOOD))
+    		if (!player.world.isRemote)
     		{
-    			player.openGui(CrossbowModMain.instance, Ref.CROSSBOW_GUI_ID, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
+    			int guiId = 0;
+    			switch (this.material) {
+				case DIAMOND:
+					guiId = Ref.DIAMOND_CROSSBOW_GUI_ID;
+					break;
+				case GOLD:
+					guiId = Ref.IRON_CROSSBOW_GUI_ID;
+					break;
+				case IRON:
+					guiId = Ref.IRON_CROSSBOW_GUI_ID;
+					break;
+				case STONE:
+					guiId = Ref.STONE_CROSSBOW_GUI_ID;
+					break;
+				case WOOD:
+					guiId = Ref.STONE_CROSSBOW_GUI_ID;
+					break;
+				default:
+					break;
+				}
+    			player.openGui(CrossbowModMain.instance, guiId, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
     		}
     		return false;
     	}
@@ -117,7 +139,27 @@ public class ItemCrossbow extends Item
             {
                 ItemStack itemstack = player.inventory.getStackInSlot(i);
                 if(itemstack.getItem() instanceof ItemCrossbow){
-                	for (int j = 0; j < InventoryCrossbow.INV_SIZE; ++j){
+                	int invSize = 0;
+        			switch (this.material) {
+    				case DIAMOND:
+    					invSize = InventoryDiamondCrossbow.INV_SIZE;
+    					break;
+    				case GOLD:
+    					invSize = InventoryIronCrossbow.INV_SIZE;
+    					break;
+    				case IRON:
+    					invSize = InventoryIronCrossbow.INV_SIZE;
+    					break;
+    				case STONE:
+    					invSize = InventoryStoneCrossbow.INV_SIZE;
+    					break;
+    				case WOOD:
+    					invSize = InventoryStoneCrossbow.INV_SIZE;
+    					break;
+    				default:
+    					break;
+    				}
+                	for (int j = 0; j < invSize; ++j){
 						ItemStack temp = ((ItemCrossbow)itemstack.getItem()).readFromNBT(itemstack.getTagCompound(), j);
 						if (isBolt(temp)){
 							fromStorage = true;
@@ -152,15 +194,12 @@ public class ItemCrossbow extends Item
      */
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
     {
-    	if (this.upgrades.contains(Upgrades.AUTO_RELOAD)) return;
         if (entityLiving instanceof EntityPlayer)
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
             boolean flag = entityplayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
             ItemStack itemstack = this.findAmmo(entityplayer);
-            if (fromStorage){
-            	((ItemCrossbow)stack.getItem()).writeToNBT(stack.getTagCompound(), this.slot);
-            }
+            if (this.upgrades.contains(Upgrades.AUTO_RELOAD)) return;
             int i = this.getMaxItemUseDuration(stack) - timeLeft;
             i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, entityplayer, i, !itemstack.isEmpty() || flag);
             if (i < 0) return;
@@ -238,6 +277,9 @@ public class ItemCrossbow extends Item
     
     public void fireBolt(ItemStack stack, World worldIn, EntityPlayer entityplayer, int i){
     	ItemStack itemstack = this.findAmmo(entityplayer);
+    	if (fromStorage){
+        	((ItemCrossbow)stack.getItem()).writeToNBT(stack.getTagCompound(), this.slot);
+        }
     	float f = getBoltVelocity(i);
 
         if ((double)f >= 0.1D)
@@ -275,8 +317,11 @@ public class ItemCrossbow extends Item
 	            {
 	            	entityBolt.setFire(100);
 	            }
-	
-	            stack.damageItem(1, entityplayer);
+	            
+	            if (!(this.upgrades.contains(Upgrades.REINFORCED_LIMBS))){
+	            	stack.damageItem(1, entityplayer);
+	            }
+	            
 	
 	            if (flag1 || entityplayer.capabilities.isCreativeMode)
 	            {
@@ -323,45 +368,50 @@ public class ItemCrossbow extends Item
      */
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        ItemStack itemstack = playerIn.getHeldItem(handIn);
-        for (int i = 0; i < playerIn.inventory.getSizeInventory(); ++i)
-        {
-            ItemStack crossbow = playerIn.inventory.getStackInSlot(i);
-            if(crossbow.getItem() instanceof ItemCrossbow){
-            	this.upgrades = new ArrayList<Upgrades>();
-            	for (int j = 0; j < InventoryCrossbow.INV_SIZE; ++j){
-					ItemStack temp = ((ItemCrossbow)crossbow.getItem()).readFromNBT(crossbow.getTagCompound(), j);
-					if (temp.getItem() instanceof ItemUpgrade){
-						this.upgrades.add(((ItemUpgrade) temp.getItem()).getUpgrade());
-					}
+        ItemStack crossbow = playerIn.getHeldItem(handIn);
+        if(crossbow.getItem() instanceof ItemCrossbow){
+        	this.upgrades = new ArrayList<Upgrades>();
+        	int invSize = 0;
+			switch (this.material) {
+			case DIAMOND:
+				invSize = InventoryDiamondCrossbow.INV_SIZE;
+				break;
+			case GOLD:
+				invSize = InventoryIronCrossbow.INV_SIZE;
+				break;
+			case IRON:
+				invSize = InventoryIronCrossbow.INV_SIZE;
+				break;
+			default:
+				break;
+			}
+        	for (int j = 0; j < invSize; ++j){
+				ItemStack temp = ((ItemCrossbow)crossbow.getItem()).readFromNBT(crossbow.getTagCompound(), j);
+				
+				if (temp.getItem() instanceof ItemUpgrade){
+					this.upgrades.add(((ItemUpgrade) temp.getItem()).getUpgrade());
 				}
-            }
+			}
         }
         
         boolean flag = !this.findAmmo(playerIn).isEmpty();
 
-        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemstack, worldIn, playerIn, handIn, flag);
+        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(crossbow, worldIn, playerIn, handIn, flag);
         if (ret != null && !this.upgrades.contains(Upgrades.AUTO_RELOAD)) return ret;
 
         if (!playerIn.capabilities.isCreativeMode && !flag)
         {
-            return flag ? new ActionResult<ItemStack>(EnumActionResult.PASS, itemstack) : new ActionResult<ItemStack>(EnumActionResult.FAIL, itemstack);
+            return flag ? new ActionResult<ItemStack>(EnumActionResult.PASS, crossbow) : new ActionResult<ItemStack>(EnumActionResult.FAIL, crossbow);
         }
         else
         {
             playerIn.setActiveHand(handIn);
 			
 			if (this.upgrades.contains(Upgrades.AUTO_RELOAD)){
-	            final int cooldown = 4;
-				if (cooldown > 0) {
-					playerIn.getCooldownTracker().setCooldown(this, cooldown);
-				}
-
-				fireBolt(itemstack ,worldIn, playerIn, 72000);
-
+				fireBolt(crossbow ,worldIn, playerIn, 72000);
 			}
 			
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, crossbow);
         }
         
     }

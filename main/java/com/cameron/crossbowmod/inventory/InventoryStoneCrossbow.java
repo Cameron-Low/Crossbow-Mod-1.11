@@ -10,21 +10,21 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.util.Constants;
 
-public class InventoryCrossbow implements IInventory{
+public class InventoryStoneCrossbow implements IInventory{
 	private String name = "Inventory Item";
 	
 	/** Provides NBT Tag Compound to reference */
 	private final ItemStack invItem;
 
 	/** Defining your inventory size this way is handy */
-	public static final int INV_SIZE = 12;
+	public static final int INV_SIZE = 2;
 	
 	protected String uniqueID;
 
 	/** Inventory's size must be same as number of slots you add to the Container class */
 	private ItemStack[] inventory = new ItemStack[INV_SIZE];
 	
-	public InventoryCrossbow(ItemStack stack) {
+	public InventoryStoneCrossbow(ItemStack stack) {
 		invItem = stack;
 		for (int i = 0; i < inventory.length; i++) {
             inventory[i] = ItemStack.EMPTY;

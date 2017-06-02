@@ -81,6 +81,7 @@ public class ModItems {
 	public static Item scopeUpgrade;
 	public static Item autoReloadUpgrade;
 	public static Item triShotUpgrade;
+	public static Item reinforcedUpgrade;
 	
 	public static void init(){
 		//Bolts
@@ -135,6 +136,7 @@ public class ModItems {
 		scopeUpgrade = new ItemUpgrade("scope_upgrade", Ref.tabCustom, Upgrades.SCOPE);
 		autoReloadUpgrade = new ItemUpgrade("auto_reload_upgrade", Ref.tabCustom, Upgrades.AUTO_RELOAD);
 		triShotUpgrade = new ItemUpgrade("tri_shot_upgrade", Ref.tabCustom, Upgrades.TRI_SHOT);
+		reinforcedUpgrade = new ItemUpgrade("reinforced_limbs_upgrade", Ref.tabCustom, Upgrades.REINFORCED_LIMBS);
 	} 
 	public static void register(){
 		//Bolts
@@ -189,6 +191,7 @@ public class ModItems {
 		GameRegistry.register(scopeUpgrade);
 		GameRegistry.register(autoReloadUpgrade);
 		GameRegistry.register(triShotUpgrade);
+		GameRegistry.register(reinforcedUpgrade);
 	} 
 	public static void registerRenders(){
 		//Bolts
@@ -243,6 +246,7 @@ public class ModItems {
 		registerRender(scopeUpgrade);
 		registerRender(autoReloadUpgrade);
 		registerRender(triShotUpgrade);
+		registerRender(reinforcedUpgrade);
 	} 
 	public static void registerRender(Item item){
 		//ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));

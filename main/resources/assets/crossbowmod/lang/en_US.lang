@@ -48,6 +48,7 @@ item.torch_bolt.name=Torch Bolt
 item.scope_upgrade.name=Scope Upgrade
 item.auto_reload_upgrade.name=Auto Reload Upgrade
 item.tri_shot_upgrade.name=Tri Shot Upgrade
+item.reinforced_limbs_upgrade.name=Reinforced Limbs Upgrade
 
 itemGroup.Crossbow Mod=Crossbows
 
@@ -56,6 +57,12 @@ achievement.firstcrossbow.desc=Getting your first crossbow
 
 achievement.betterfirepower=Better Firepower
 achievement.betterfirepower.desc=Upgrading to much better things!
+
+achievement.upgrades=Upgrades!
+achievement.upgrades.desc=Enjoy your new abilities!
+
+achievement.fullauto=Full Auto
+achievement.fullauto.desc=Nothing will stand in your way
 
 achievement.ultimatekillingmachine=Ultimate Killing Machine
 achievement.ultimatekillingmachine.desc=No one stands a chance against you

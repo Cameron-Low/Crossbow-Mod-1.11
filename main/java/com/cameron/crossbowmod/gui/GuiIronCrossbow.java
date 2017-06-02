@@ -2,20 +2,20 @@ package com.cameron.crossbowmod.gui;
 
 
 import com.cameron.crossbowmod.Ref;
-import com.cameron.crossbowmod.container.ContainerCrossbow;
+import com.cameron.crossbowmod.container.ContainerIronCrossbow;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiCrossbow extends GuiContainer{
+public class GuiIronCrossbow extends GuiContainer{
 	// Height and width of actual image
     public static final int WIDTH = 175;
     public static final int HEIGHT = 160;
 
     // Location of the gui
-    private static final ResourceLocation background = new ResourceLocation(Ref.MODID, "textures/gui/crossbow_upgrades_gui.png");
+    private static final ResourceLocation background = new ResourceLocation(Ref.MODID, "textures/gui/iron_crossbow_gui.png");
 
-    public GuiCrossbow(ContainerCrossbow container) {
+    public GuiIronCrossbow(ContainerIronCrossbow container) {
         super(container);
     }
 
