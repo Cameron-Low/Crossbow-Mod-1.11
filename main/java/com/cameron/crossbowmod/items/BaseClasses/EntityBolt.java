@@ -162,7 +162,12 @@ public class EntityBolt extends EntityArrow implements IEntityAdditionalSpawnDat
 
 	@Override
 	public void writeSpawnData(ByteBuf buffer) {
-		buffer.writeInt(this.shootingEntity.getEntityId());
+		try {
+			buffer.writeInt(this.shootingEntity.getEntityId());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 	@Override
