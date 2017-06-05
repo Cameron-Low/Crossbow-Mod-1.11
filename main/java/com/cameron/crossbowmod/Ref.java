@@ -6,7 +6,7 @@ public class Ref {
 	//Mod Details
     public static final String MODID = "crossbowmod";
     public static final String MODNAME = "Crossbow Mod";
-    public static final String VERSION = "1.5";
+    public static final String VERSION = "1.6";
     public static final String ACCEPTEDMINECRAFTVERSION = "[1.11.2]";
 	
     //Creative Tab
