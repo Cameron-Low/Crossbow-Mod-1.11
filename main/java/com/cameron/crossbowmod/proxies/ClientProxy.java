@@ -1,8 +1,10 @@
 package com.cameron.crossbowmod.proxies;
 
+import com.cameron.crossbowmod.KeyHandler;
 import com.cameron.crossbowmod.ModItems;
 import com.cameron.crossbowmod.achievements.AchievementListener;
 import com.cameron.crossbowmod.enums.Bolts;
+import com.cameron.crossbowmod.gui.GuiScopeOverlay;
 import com.cameron.crossbowmod.items.BaseClasses.RenderBolt;
 import com.cameron.crossbowmod.items.entity.EntityDiamondBolt;
 import com.cameron.crossbowmod.items.entity.EntityExplosiveBolt;
@@ -44,6 +46,8 @@ public class ClientProxy implements CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityFreezeBolt.class, new RenderBolt<EntityFreezeBolt>(manager,Bolts.FREEZE));
 		
 		MinecraftForge.EVENT_BUS.register(new AchievementListener());
+		MinecraftForge.EVENT_BUS.register(new GuiScopeOverlay());
+		MinecraftForge.EVENT_BUS.register(new KeyHandler());
 	}
 
 	@Override

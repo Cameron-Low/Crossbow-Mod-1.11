@@ -2,7 +2,6 @@ package com.cameron.crossbowmod;
 
 import com.cameron.crossbowmod.achievements.AchievementList;
 import com.cameron.crossbowmod.crafting.Recipes;
-import com.cameron.crossbowmod.gui.GuiScopeOverlay;
 import com.cameron.crossbowmod.items.entity.EntityDiamondBolt;
 import com.cameron.crossbowmod.items.entity.EntityExplosiveBolt;
 import com.cameron.crossbowmod.items.entity.EntityFlameBolt;
@@ -18,7 +17,6 @@ import com.cameron.crossbowmod.proxies.CommonProxy;
 import com.cameron.crossbowmod.util.GuiHandler;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -64,8 +62,6 @@ public class CrossbowModMain {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		MinecraftForge.EVENT_BUS.register(new GuiScopeOverlay());
-		MinecraftForge.EVENT_BUS.register(new KeyHandler());
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		
 	}
