@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class KeyHandler {
 	private final Minecraft mc;
 	public static boolean isZoom;
+	private static float baseFov;
 	/** Key index for easy handling and retrieval of keys and key descriptions */
 	public static final byte KEY_ZOOM = 0;
 
@@ -32,6 +33,7 @@ public class KeyHandler {
 
 	public KeyHandler() {
 		this.mc = Minecraft.getMinecraft();
+		this.baseFov = this.mc.gameSettings.fovSetting;
 		for (int i = 0; i < desc.length; ++i) {
 			keys[i] = new KeyBinding("key.rgm." + desc[i] + ".desc", keyValues[i], "None");
 			ClientRegistry.registerKeyBinding(keys[i]);
@@ -51,23 +53,22 @@ public class KeyHandler {
 			if (heldItem.getItem() instanceof ItemCrossbow){
 				ItemCrossbow crossbow = (ItemCrossbow) heldItem.getItem();
 				if (crossbow.upgrades.contains(Upgrades.SCOPE)){
-					if (kb == keys[KEY_ZOOM].getKeyCode()) {		
+					if (kb == keys[KEY_ZOOM].getKeyCode()) {
+						if(!isZoom) baseFov = Minecraft.getMinecraft().gameSettings.fovSetting;
 						Minecraft.getMinecraft().gameSettings.fovSetting -= 20f;
+						isZoom = true;
 						if (Minecraft.getMinecraft().gameSettings.fovSetting < 10f){
-							Minecraft.getMinecraft().gameSettings.fovSetting = 70f;
+							Minecraft.getMinecraft().gameSettings.fovSetting = baseFov;
+							isZoom = false;
 						}
-					}else {
-						Minecraft.getMinecraft().gameSettings.fovSetting = 70f;
+					}else if(isZoom){
+						Minecraft.getMinecraft().gameSettings.fovSetting = baseFov;
+						isZoom = false;
 					}
 				}
-				if (!(Minecraft.getMinecraft().gameSettings.fovSetting == 70f)){
-						isZoom = true;
-				} else {
-						isZoom = false;
-				}
-			} else {
+			} else if(isZoom){
 				isZoom = false;
-				Minecraft.getMinecraft().gameSettings.fovSetting = 70f;
+				Minecraft.getMinecraft().gameSettings.fovSetting = baseFov;
 			}
 		}
 	}
